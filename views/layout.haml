@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title My Sinatra Website
+    %link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")
+    %link(rel="stylesheet" href="css/styles.css")
+  %body
+    #wrapper
+      #header
+        =styled_flash
+
+      #content
+        =yield
+

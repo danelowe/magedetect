@@ -1,3 +1,7 @@
 source 'https://rubygems.org'
 gem 'nokogiri'
+gem 'sinatra'
+gem 'haml'
+gem 'sidekiq'
+gem 'sinatra-flash'
 gem 'pry'
