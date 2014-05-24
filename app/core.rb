@@ -1,6 +1,7 @@
 ROOT_PATH = File.expand_path(File.join(File.dirname(__FILE__), '..'))
 require 'bundler'
 Bundler.require
+require 'net/http'
 require 'action_mailer'
 require 'csv'
 require 'haml'
