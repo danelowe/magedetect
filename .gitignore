@@ -1,6 +1,5 @@
 .idea
 csvs
 config/secrets.yml
-config/deploy.rb
-config/deploy/
+config/deploy/production.rb
 .bundle/
