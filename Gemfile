@@ -7,5 +7,8 @@ gem 'haml'
 gem 'sidekiq'
 gem 'sinatra-flash'
 gem 'actionmailer'
-gem 'pry'
-gem 'capistrano'
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'pry'
+end

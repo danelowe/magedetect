@@ -1,2 +1,6 @@
 .idea
 csvs
+config/secrets.yml
+config/deploy.rb
+config/deploy/
+.bundle/
