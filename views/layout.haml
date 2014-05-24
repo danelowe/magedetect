@@ -2,16 +2,14 @@
 %html
   %head
     %title MageDetect by Avid Online
-    %link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")
-    %link(rel="stylesheet" href="css/styles.css")
+    %link{rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Oxygen:300,400,700'}
+    %link{rel: 'stylesheet', href: stylesheet_path('styles')}
   %body
     %header
-      MageDetect
-      %a{href: 'http://avidonline.co.nz/'} Avid Online
-    #wrapper
-      #header
+      .container
+        %h1 MageDetect
+        %a{href: 'http://avidonline.co.nz/'} Avid Online
+      .container
         =styled_flash
-
-      #content
         =yield
 

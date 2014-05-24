@@ -1,4 +1,17 @@
+.hero
+  %h2 Detect which of a group of sites are running Magento
+  %p
+    The MageDetect service will run series of tests on each of the domains you enter below and send you an email
+    with the results.
+  %p
+    Attached to this email you will find two CSV files:
+    %ol
+      %li A summary score for each of the domains out of the ten possible indicators tested.
+      %li A report on which tests passed and which failed for each domain.
+  %p Your email address will not be stored or used again.
 %form{method: :post}
-  %input{name: :email, value: @email}
-  %textarea{name: :urls}= @urls.join("\n")
+  %label{for: :email} Email to send the results to
+  %input{id: :email, name: :email, value: @email}
+  %label{for: :urls} List of websites to check. One per line.
+  %textarea{id: :urls, name: :urls}= @urls.join("\n")
   %button{type: :submit} Submit
