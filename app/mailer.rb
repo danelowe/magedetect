@@ -9,7 +9,7 @@ class Mailer < ActionMailer::Base
       format.text
       format.html
     end
-    attachments.each {|path| mail.attachments[File.basename(path)] = path}
+    attachments.each {|path| mail.attachments[File.basename(path)] = File.read(path)}
     mail
   end
 end
