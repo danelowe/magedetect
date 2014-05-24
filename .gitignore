@@ -1,4 +1,5 @@
 .idea
 csvs
 config/secrets.yml
-deploy.rb
+config/deploy.rb
+config/deploy
