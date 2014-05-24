@@ -10,5 +10,6 @@ gem 'actionmailer'
 group :development do
   gem 'capistrano'
   gem 'capistrano-bundler'
+  gem 'capistrano-sidekiq' , github: 'seuros/capistrano-sidekiq'
   gem 'pry'
 end

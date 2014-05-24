@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/seuros/capistrano-sidekiq.git
+  revision: 46fe4de17443692a4e3346cbd4cc6e12d14f4502
+  specs:
+    capistrano-sidekiq (0.3.0)
+      capistrano
+      sidekiq
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -117,6 +125,7 @@ DEPENDENCIES
   actionmailer
   capistrano
   capistrano-bundler
+  capistrano-sidekiq!
   haml
   nokogiri
   pry
