@@ -1,24 +1,27 @@
 require 'bundler'
 Bundler.require
-require_relative 'core'
-require_relative 'workers/sites_worker'
+require_relative 'app/core'
+module MageDetect end
+class MageDetect::Server < Sinatra::Base
+  register Sinatra::Flash
 
+  get '/' do
+    @urls = %w[demo.magentocommerce.com]
+    @email = 'email@example.com'
+    haml :home
+  end
 
-Sidekiq.configure_client do |config|
-  config.redis = { :namespace => 'Barcelona', :url => 'redis://127.0.0.1:6379/1' }
+  post '/' do
+    require 'bundler'
+    Bundler.require
+    @urls = params[:urls].split("\n")
+    @email = params[:email]
+    SitesWorker.perform_async(@urls, @email)
+    flash.now[:success] = 'You will be emailed'
+    haml :home
+  end
+
+  # start the server if ruby file executed directly
+  run! if app_file == $0
 end
 
-get '/' do
-  @urls = %w[demo.magentocommerce.com]
-  @email = 'magedetect@avidonline.co.nz'
-  haml :home
-end
-post '/' do
-  require 'bundler'
-  Bundler.require
-  @urls = params[:urls].split("\n")
-  @email = params[:email]
-  SitesWorker.perform_async(@urls, @email)
-  flash.now[:success] = 'You will be emailed'
-  haml :home
-end

@@ -1,10 +1,22 @@
+ROOT_PATH = File.expand_path(File.join(File.dirname(__FILE__), '..'))
 require 'bundler'
 Bundler.require
+require 'action_mailer'
+require 'csv'
+require 'haml'
+require 'action_view'
+require 'haml/template'
+require 'haml/template/plugin'
+require 'sinatra/config_file'
+config_file File.join(ROOT_PATH, 'config', 'secrets.yml')
+require_relative '../config/application'
+require_relative 'mailer'
+require_relative 'workers/sites_worker'
 
 class Site
   attr_accessor :score, :domain
-  def initialize domain
-    url = "http://#{domain}" if URI.parse(domain).scheme.nil?
+  def initialize url
+    url = "http://#{url}" if URI.parse(url).scheme.nil?
     @domain = URI.parse(url).host
     @responses = {}
     @pages = {}

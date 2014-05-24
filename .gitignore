@@ -1,2 +1,4 @@
 .idea
 csvs
+config/secrets.yml
+deploy.rb
