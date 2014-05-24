@@ -18,13 +18,6 @@ class MageDetect::Server < Sinatra::Base
     %w(stylesheets javascripts images).each do |asset_directory|
       settings.sprockets.append_path File.join(settings.assets_path, asset_directory)
     end
-
-    # configure Compass so it can find images
-    Compass.configuration do |compass|
-      compass.project_path = settings.assets_path
-      compass.images_dir = 'images'
-      compass.output_style = :expanded
-    end
     # Setup Sprockets
     sprockets.append_path File.join(root, 'app', 'assets', 'stylesheets')
     sprockets.append_path File.join(root, 'app', 'assets', 'javascripts')

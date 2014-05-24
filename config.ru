@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'sinatra'
-require 'compass'
 
 set :public_dir, File.expand_path(File.dirname(__FILE__) + '/public')
 set :views, File.expand_path(File.dirname(__FILE__) + '/views')
