@@ -8,8 +8,10 @@
     %header
       .container
         %h1 MageDetect
-        %a{href: 'http://avidonline.co.nz/'} Avid Online
-      .container
-        =styled_flash
-        =yield
+        %a.avid{href: 'http://avidonline.co.nz/'}
+          %span{style: 'color: #999'}by
+          Avid Online
+    .container
+      =styled_flash
+      .content=yield
 

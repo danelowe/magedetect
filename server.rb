@@ -36,6 +36,7 @@ class MageDetect::Server < Sinatra::Base
   end
 
   get '/' do
+    @errors = []
     @urls = %w[demo.magentocommerce.com]
     @email = 'email@example.com'
     haml :home
@@ -46,11 +47,25 @@ class MageDetect::Server < Sinatra::Base
     Bundler.require
     @urls = params[:urls].split("\n")
     @email = params[:email]
-    SitesWorker.perform_async(@urls, @email)
-    flash.now[:success] = 'You will be emailed'
+    if validate
+      SitesWorker.perform_async(@urls, @email)
+      flash.now[:success] = 'You will be sent an email with the results as soon as they are processed'
+    end
     haml :home
   end
 
+  def validate
+    @errors = []
+    if @urls.count < 1
+      @errors << 'Please enter a URL to test'
+    elsif @urls.count > 100
+      @errors << 'Please enter no more than 100 URLs'
+    end
+    if (@email =~ /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/).nil?
+      @errors << 'Please enter an email address'
+    end
+    @errors.count == 0
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
