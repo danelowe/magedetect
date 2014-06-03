@@ -13,6 +13,7 @@ config_file File.join(ROOT_PATH, 'config', 'secrets.yml')
 require_relative '../config/application'
 require_relative 'mailer'
 require_relative 'workers/sites_worker'
+require_relative 'workers/screen_worker'
 
 class Site
   attr_accessor :score, :domain
